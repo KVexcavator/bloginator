@@ -11,5 +11,5 @@ get '/main' do
 end
 
 get '/new' do
-  erb "Hello new post"
+  erb :new
 end
