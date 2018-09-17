@@ -58,10 +58,16 @@ end
 
 
 get '/detals/:post_id' do
-	 post_id= params[ :post_id]
 
+	 # получаем переменную из URL
+	 post_id= params[ :post_id]
+	 # делаем выборку одного поста
 	 result=@db.execute "SELECT * FROM posts WHERE id= ? ",[post_id]
 	 @row=result[0]
 
 	 erb :detals
+end
+
+post '/detals/' do
+  "Hello World"
 end

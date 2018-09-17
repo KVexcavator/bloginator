@@ -1,4 +1,15 @@
-<h2>Post details</h2>
-<p>
-<%= @row['text']+"<br>"+@row['created_date']  %>
-</p>
+<div>
+  <div>
+  <h3>Post details: </h2>
+  <%= @row['text']+"<br>"+@row['created_date']  %>
+  </div>
+  <div>
+  <h3>Comments:</h2>
+    <form action="/detals/<%= @row['id'] %>" method="post" >
+      <div class="form-group">
+      <textarea name="content" class="form-control"  rows="6" style="width: 50%" placeholder="Type comment text here"></textarea>
+      </div>
+    <button type="submit" class="btn btn-primary">Add comment</button>
+    </form>
+  </div>
+</div>
