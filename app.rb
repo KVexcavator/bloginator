@@ -72,6 +72,9 @@ get '/detals/:post_id' do
 	 result=@db.execute "SELECT * FROM posts WHERE id= ? ",[post_id]
 	 @row=result[0]
 
+	 # выборка коментариев
+	 @comments=@db.execute "SELECT * FROM comments WHERE post_id=? ORDER BY id",[post_id]
+
 	 erb :detals
 end
 
