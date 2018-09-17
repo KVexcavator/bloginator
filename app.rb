@@ -83,6 +83,6 @@ post '/detals/:post_id' do
 	            VALUES ( ? , ? , datetime())", [content,post_id]
 
 	# перенаправление на главную страницу
-	redirect to "/"
-  erb "You type comment : #{content}"
+	redirect to "/detals/"+post_id
+  
 end
