@@ -68,6 +68,10 @@ get '/detals/:post_id' do
 	 erb :detals
 end
 
-post '/detals/' do
-  "Hello World"
+# щбработчик коментариев
+post '/detals/:post_id' do
+	post_id= params[ :post_id]
+	content= params[ :content ]
+
+  erb "You type comment : #{content}"
 end
