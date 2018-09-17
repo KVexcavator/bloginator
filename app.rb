@@ -19,6 +19,13 @@ configure do
 										`created_date`	DATE,
 										`text`	TEXT										
 										)"
+
+	@db.execute "CREATE TABLE IF NOT EXISTS comments (
+										`id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+										`created_date`	DATE,
+										`comment_text`	TEXT,
+										'post_id'	INTEGER									
+										)"
 end
 
 get '/' do
@@ -72,6 +79,10 @@ end
 post '/detals/:post_id' do
 	post_id= params[ :post_id]
 	content= params[ :content ]
+  @db.execute "INSERT INTO comments (comment_text, post_id, created_date)
+	            VALUES ( ? , ? , datetime())", [content,post_id]
 
+	# перенаправление на главную страницу
+	redirect to "/"
   erb "You type comment : #{content}"
 end
