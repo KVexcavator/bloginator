@@ -59,5 +59,9 @@ end
 
 get '/detals/:post_id' do
 	 post_id= params[ :post_id]
-	 erb "Displaying informetion for post with id : #{post_id}"
+
+	 result=@db.execute "SELECT * FROM posts WHERE id= ? ",[post_id]
+	 @row=result[0]
+
+	 erb :detals
 end
