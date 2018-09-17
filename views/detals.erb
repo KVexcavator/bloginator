@@ -1,15 +1,22 @@
 <div>
   <div>
-  <h3>Post details: </h2>
-  <%= @row['text']+"<br>"+@row['created_date']  %>
+    <h3>Post details: </h2>
+    <%= @row['text']+"<br>"+@row['created_date']  %>
   </div>
   <div>
   <h3>Comments:</h2>
+    <%  @comments.each do |comment| %>
+      <p>
+      <%= comment['comment_text']+"<br>"+comment['created_date']  %>
+      </p>
+    <% end  %>
+  </div>
+  <div>
     <form action="/detals/<%= @row['id'] %>" method="post" >
       <div class="form-group">
-      <textarea name="content" class="form-control"  rows="6" style="width: 50%" placeholder="Type comment text here"></textarea>
+        <textarea name="content" class="form-control"  rows="6" style="width: 50%" placeholder="Type comment text here"></textarea>
       </div>
-    <button type="submit" class="btn btn-primary">Add comment</button>
+      <button type="submit" class="btn btn-primary">Add comment</button>
     </form>
   </div>
 </div>
