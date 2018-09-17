@@ -22,7 +22,9 @@ configure do
 end
 
 get '/' do
-	erb "This is Bloginator!"			
+
+	
+	erb :index		
 end
 
 get '/main' do
@@ -42,6 +44,8 @@ post '/new' do
 		return erb :new
 
 	end
+
+	# созранение данных в БД
 	@db.execute "INSERT INTO posts (text, created_date)
 	            VALUES ( ? , datetime())", [content]
 
