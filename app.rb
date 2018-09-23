@@ -15,7 +15,9 @@ end
 class Posts<ActiveRecord::Base
 end
 #создание таблицы comments(`created_date`	DATE,	`comment_text`	TEXT,	'post_id'	INTEGER	)
-
+class Comments<ActiveRecord::Base
+	
+end
 
 get '/' do
 
