@@ -2,12 +2,10 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
+require "sinatra/activerecord"
 
 # подключение к базе данных
-def init_db
-	@db=SQLite3::Database.new 'bloginator.db'
-	@db.results_as_hash=true
-end
+set :database, "sqllite3:blog.db"
 
 before do
 	init_db
