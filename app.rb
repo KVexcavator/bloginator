@@ -13,8 +13,7 @@ end
 #создание сущности блог
 # создание таблицы posts (`created_date`	DATE,`text`	TEXT )
 #создание таблицы comments(`created_date`	DATE,	`comment_text`	TEXT,	'post_id'	INTEGER	)
-class Blog<ActiveRecord::Base
-end
+
 
 get '/' do
 
