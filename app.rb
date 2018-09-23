@@ -5,29 +5,17 @@ require 'sqlite3'
 require "sinatra/activerecord"
 
 # подключение к базе данных
-set :database, "sqllite3:blog.db"
+set :database, "sqlite3:blog.db"
 
 before do
-	init_db
+
 end
 
 # создание таблицы posts (`created_date`	DATE,`text`	TEXT )
-#создание таблицы comments(`created_date`	DATE,	`comment_text`	TEXT,	'post_id'	INTEGER	)
-configure do
-	init_db
-	@db.execute "CREATE TABLE IF NOT EXISTS posts (
-										`id`	INTEGER PRIMARY KEY AUTOINCREMENT,
-										`created_date`	DATE,
-										`text`	TEXT										
-										)"
-
-	@db.execute "CREATE TABLE IF NOT EXISTS comments (
-										`id`	INTEGER PRIMARY KEY AUTOINCREMENT,
-										`created_date`	DATE,
-										`comment_text`	TEXT,
-										'post_id'	INTEGER									
-										)"
+class Posts<ActiveRecord::Base
 end
+#создание таблицы comments(`created_date`	DATE,	`comment_text`	TEXT,	'post_id'	INTEGER	)
+
 
 get '/' do
 
