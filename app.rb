@@ -8,7 +8,6 @@ require "sinatra/activerecord"
 set :database, "sqlite3:blog.db"
 
 before do
-
 end
 
 #создание сущности блог
