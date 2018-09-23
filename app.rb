@@ -3,6 +3,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+# подключение к базе данных
 def init_db
 	@db=SQLite3::Database.new 'bloginator.db'
 	@db.results_as_hash=true
@@ -12,6 +13,8 @@ before do
 	init_db
 end
 
+# создание таблицы posts (`created_date`	DATE,`text`	TEXT )
+#создание таблицы comments(`created_date`	DATE,	`comment_text`	TEXT,	'post_id'	INTEGER	)
 configure do
 	init_db
 	@db.execute "CREATE TABLE IF NOT EXISTS posts (
@@ -30,7 +33,7 @@ end
 
 get '/' do
 
-	# вывод списка постов из БД
+	# вывод списка постов из таблицы post
 	@result=@db.execute "SELECT * FROM posts ORDER BY id DESC"
 
 	erb :index		
@@ -45,6 +48,8 @@ get '/new' do
 end
 
 post '/new' do
+
+	#вывод ощибки при отправке пустой формы
 	content= params[ :content ]
 
 	if content.length < 1
@@ -54,7 +59,7 @@ post '/new' do
 
 	end
 
-	# созранение данных в БД
+	# созранение данных в таблицу posts
 	@db.execute "INSERT INTO posts (text, created_date)
 	            VALUES ( ? , datetime())", [content]
 
